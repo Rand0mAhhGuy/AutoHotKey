@@ -1,3 +1,4 @@
+; DOWNLOAD AUTO HOT KEY V1.1 TO USE
 ; Configuration
 HotkeyKey := "e" ; The key to toggle the script
 ; End of Configuration
