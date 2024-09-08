@@ -8,7 +8,7 @@ Gui, Add, Button, x170 y68 w70 h24 gUpdateHotkey, Update
 Gui, Add, Text, x10 y100 w230 Center vCurrentHotkeyText, Current Hotkey: None
 Gui, Add, Button, x10 y120 w230 h40 gToggleHotkey vToggleBtn, Activate
 Gui, Add, Text, x10 y165 w230 Center, The script only flicks your camera; you need to jump and walk yourself.
-Gui, Show, w250 h205, Wallhop
+Gui, Show, w250 h205, Wallhop Helper
 
 HotkeyStatus := "Off"
 HotkeyKey := ""
@@ -40,6 +40,7 @@ UpdateHotkey:
             HotkeyKey := NewHotkey
             Hotkey, %HotkeyKey%, Labels, On
             GuiControl,, CurrentHotkeyText, Current Hotkey: %HotkeyKey%
+            ; Ensure button reflects new state
             if (HotkeyStatus = "On") {
                 GuiControl,, ToggleBtn, Deactivate
             } else {
