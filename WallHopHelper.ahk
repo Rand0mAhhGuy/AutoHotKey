@@ -4,9 +4,10 @@ Gui, Add, Text, x10 y10 w230 Center, Made by Rand0mAhhGuy on GitHub!
 Gui, Add, Text, x10 y30 w230 Center, Enter your desired hotkey:
 Gui, Add, Edit, x10 y50 w150 vNewHotkey
 Gui, Add, Button, x170 y50 w70 h24 gUpdateHotkey, Enter
-Gui, Add, Text, x10 y80 w230 Center vCurrentHotkeyText, Current Hotkey: None
-Gui, Add, Button, x10 y100 w180 h40 gToggleHotkey vToggleBtn, Activate
-Gui, Add, Button, x200 y100 w40 h40 gShowGuide, Guide
+Gui, Add, Text, x0 y80 w160 Center vCurrentHotkeyText, Current Hotkey: None
+Gui, Add, Button, x150 y78 w90 h20 gResetHotkey, Clear HotKey
+Gui, Add, Button, x10 y105 w180 h40 gToggleHotkey vToggleBtn, Activate
+Gui, Add, Button, x200 y105 w40 h40 gShowGuide, Guide
 Gui, Show, w250 h155, Wallhop Helper
 
 HotkeyStatus := "Off"
@@ -46,8 +47,18 @@ UpdateHotkey:
             }
         }
     } else {
-        MsgBox, Invalid Key!
+        MsgBox, Invalid Key! Hotkey can only be 1 letter or number.
     }
+return
+
+ResetHotkey:
+    if (HotkeyKey) {
+        Hotkey, %HotkeyKey%, Labels, Off
+    }
+    HotkeyKey := ""
+    GuiControl,, CurrentHotkeyText, Current Hotkey: None
+    GuiControl,, ToggleBtn, Activate
+    HotkeyStatus := "Off"
 return
 
 Labels:
@@ -57,15 +68,15 @@ Labels:
 return
 
 IsValidKey(key) {
-    return (key >= "a" and key <= "z") or (key >= "0" and key <= "9") or (key = " ") or (key = "Enter")
+    return (StrLen(key) = 1 and ((key >= "a" and key <= "z") or (key >= "0" and key <= "9")))
 }
 
 ShowGuide:
     Gui, 2:+Resize
     Gui, 2:Font, s10
-    Gui, 2:Add, Text, x10 y10 w230 h90, Remember to turn on Shiftlock.`n`nThe script only flicks your camera; you need to jump and walk yourself.
-    Gui, 2:Add, Button, x80 y90 w80 h30 gCloseGuide, Got it!
-    Gui, 2:Show, w250 h130, Guide
+    Gui, 2:Add, Text, x10 y10 w230 h100 vGuideText, Remember to turn on Shiftlock.`n`nThe script only flicks your camera; you need to jump and walk yourself.`n`nHotkey can only be 1 letter or number.
+    Gui, 2:Add, Button, x80 y115 w80 h30 gCloseGuide, Got it!
+    Gui, 2:Show, w250 h160, Guide
 return
 
 CloseGuide:
