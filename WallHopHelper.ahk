@@ -1,14 +1,13 @@
 ; YOU NEED TO DOWNLOAD AUTO HOTKEY V1.1 SPECIFICALLY TO RUN THIS SCRIPT
 Gui, Font, s10
 Gui, Add, Text, x10 y10 w230 Center, Made by Rand0mAhhGuy on GitHub!
-Gui, Add, Text, x10 y30 w230 Center, Remember to turn on Shiftlock
-Gui, Add, Text, x10 y50 w230 Center, Enter your desired hotkey:
-Gui, Add, Edit, x10 y70 w150 vNewHotkey
-Gui, Add, Button, x170 y68 w70 h24 gUpdateHotkey, Update
-Gui, Add, Text, x10 y100 w230 Center vCurrentHotkeyText, Current Hotkey: None
-Gui, Add, Button, x10 y120 w230 h40 gToggleHotkey vToggleBtn, Activate
-Gui, Add, Text, x10 y165 w230 Center, The script only flicks your camera; you need to jump and walk yourself.
-Gui, Show, w250 h205, Wallhop Helper
+Gui, Add, Text, x10 y30 w230 Center, Enter your desired hotkey:
+Gui, Add, Edit, x10 y50 w150 vNewHotkey
+Gui, Add, Button, x170 y50 w70 h24 gUpdateHotkey, Enter
+Gui, Add, Text, x10 y80 w230 Center vCurrentHotkeyText, Current Hotkey: None
+Gui, Add, Button, x10 y100 w180 h40 gToggleHotkey vToggleBtn, Activate
+Gui, Add, Button, x200 y100 w40 h40 gShowGuide, Guide
+Gui, Show, w250 h155, Wallhop Helper
 
 HotkeyStatus := "Off"
 HotkeyKey := ""
@@ -40,7 +39,6 @@ UpdateHotkey:
             HotkeyKey := NewHotkey
             Hotkey, %HotkeyKey%, Labels, On
             GuiControl,, CurrentHotkeyText, Current Hotkey: %HotkeyKey%
-            ; Ensure button reflects new state
             if (HotkeyStatus = "On") {
                 GuiControl,, ToggleBtn, Deactivate
             } else {
@@ -61,6 +59,18 @@ return
 IsValidKey(key) {
     return (key >= "a" and key <= "z") or (key >= "0" and key <= "9") or (key = " ") or (key = "Enter")
 }
+
+ShowGuide:
+    Gui, 2:+Resize
+    Gui, 2:Font, s10
+    Gui, 2:Add, Text, x10 y10 w230 h90, Remember to turn on Shiftlock.`n`nThe script only flicks your camera; you need to jump and walk yourself.
+    Gui, 2:Add, Button, x80 y90 w80 h30 gCloseGuide, Got it!
+    Gui, 2:Show, w250 h130, Guide
+return
+
+CloseGuide:
+    Gui, 2:Destroy
+return
 
 GuiClose:
     ExitApp
