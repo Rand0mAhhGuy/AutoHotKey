@@ -40,7 +40,6 @@ UpdateHotkey:
             HotkeyKey := NewHotkey
             Hotkey, %HotkeyKey%, Labels, On
             GuiControl,, CurrentHotkeyText, Current Hotkey: %HotkeyKey%
-            ; Ensure button reflects new state
             if (HotkeyStatus = "On") {
                 GuiControl,, ToggleBtn, Deactivate
             } else {
