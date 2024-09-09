@@ -72,9 +72,8 @@ IsValidKey(key) {
 }
 
 ShowGuide:
-    Gui, 2:+Resize
     Gui, 2:Font, s10
-    Gui, 2:Add, Text, x10 y10 w230 h100 vGuideText, Remember to turn on Shiftlock.`n`nThe script only flicks your camera; you need to jump and walk yourself.`n`nHotkey can only be 1 letter or number.
+    Gui, 2:Add, Text, x10 y10 w230 h100 vGuideText2, Remember to turn on Shiftlock.`n`nThe script only flicks your camera; you need to jump and walk yourself.`n`nHotkey can only be 1 letter or number.
     Gui, 2:Add, Button, x80 y115 w80 h30 gCloseGuide, Got it!
     Gui, 2:Show, w250 h160, Guide
 return
