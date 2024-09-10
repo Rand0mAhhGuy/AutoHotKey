@@ -4,7 +4,7 @@ Gui, Add, Text, x10 y10 w230 Center, Made by Rand0mAhhGuy on GitHub!
 Gui, Add, Text, x10 y30 w230 Center, Enter your desired hotkey:
 Gui, Add, Edit, x10 y50 w150 vNewHotkey
 Gui, Add, Button, x170 y50 w70 h24 gUpdateHotkey, Enter
-Gui, Add, Text, x0 y80 w160 Center vCurrentHotkeyText, Current Hotkey: None
+Gui, Add, Text, x0 y80 w150 Center vCurrentHotkeyText, Current Hotkey: None
 Gui, Add, Button, x150 y78 w90 h20 gResetHotkey, Clear HotKey
 Gui, Add, Button, x10 y105 w180 h40 gToggleHotkey vToggleBtn, Activate
 Gui, Add, Button, x200 y105 w40 h40 gShowGuide, Guide
